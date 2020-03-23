@@ -48,14 +48,20 @@ public class Console {
                 bookController.searchAndBook(flightFinder);
                 break;
             case 4:
+                System.out.println(bookController.getAllBooks());
                 int bookingId;
                 System.out.println("Please, enter id of Booking: ");
-                bookingId=in.nextInt();
-                try {
-                    System.out.println(bookController.rejectMyBook(bookingId));
-                }catch (CustomException ex){
-                    System.err.println(ex.getMessage());
+                if (in.hasNextInt()) {
+                    bookingId = in.nextInt();
+                    try {
+                        System.out.println(bookController.rejectMyBook(bookingId));
+                    }catch (CustomException ex){
+                        System.err.println(ex.getMessage());
+                    }
+                } else {
+                    System.err.println("Your id is not valid!");
                 }
+
                 break;
             case 5:
                 String name;

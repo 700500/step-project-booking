@@ -1,12 +1,16 @@
 package StepProjectBooking.service;
 
 import StepProjectBooking.domain.Book;
+import StepProjectBooking.domain.Flight;
 import StepProjectBooking.domain.FlightFinder;
 import StepProjectBooking.domain.Passenger;
 import StepProjectBooking.dao.DAO;
 import StepProjectBooking.dao.DaoBookFile;
 import StepProjectBooking.exception.CustomException;
+import StepProjectBooking.utils.CustomUtils;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
@@ -15,6 +19,11 @@ import java.util.stream.Collectors;
 public class BookService {
     private DAO<Book> daoBookFile=new DaoBookFile("src\\main\\java\\StepProjectBooking\\filesTxt\\Book.txt");
     private final FlightService flightService = new FlightService();
+
+    public Collection<String> getAllBooks() {
+        return daoBookFile.getAll().stream().map(Book::show).collect(Collectors.toList());
+    }
+
 
     public Collection<String> getAllMyFlights(String name, String surname){
         return daoBookFile.getMyFlights(name,surname).stream().

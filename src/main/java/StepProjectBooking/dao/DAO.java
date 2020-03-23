@@ -10,7 +10,7 @@ public interface DAO<A> {
     Collection<A> getAll();
     Collection<A> getAllByInfo(FlightFinder flightFinder);
     Collection<A> getMyFlights(String name, String surname);
-    Collection<A> rejectById(int id);
+    Collection<A> rejectById(int  id);
     int exit(int command);
     void createAll(Collection<A> data);
     void changeTheNumberOfFreeSeats(int id, int count);

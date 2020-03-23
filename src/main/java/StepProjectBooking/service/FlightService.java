@@ -18,9 +18,11 @@ public class FlightService {
 
     public Collection<String> getAllFlights() {
         return daoFlightFile.getAll().stream()
-                .filter(flight ->
-                        Duration.between(LocalDateTime.now(),CustomUtils.parseStringToLocalDateTime(flight.getTime()))
-                                .getSeconds()<86400)
+                .filter(flight -> {
+                            long seconds = Duration.between(LocalDateTime.now(),CustomUtils.parseStringToLocalDateTime(flight.getTime()))
+                                    .getSeconds();
+                            return  seconds>0 && seconds<86400;
+                        })
                 .map(Flight::show).collect(Collectors.toList());
     }
 

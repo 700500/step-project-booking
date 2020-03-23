@@ -10,6 +10,9 @@ public class BookController {
     private final FlightController flightController=new FlightController();
     private BookService bookService=new BookService();
 
+    public String getAllBooks(){
+        return bookService.getAllBooks().toString();
+    }
     public String getByNameAndSurname(String name, String surname){
         Collection<String> myFlights = bookService.getAllMyFlights(name,surname);
         return myFlights.toString();
@@ -17,7 +20,7 @@ public class BookController {
 
     public String rejectMyBook(int id){
         Collection<String> myBookings = bookService.rejectMyBooking(id);
-        return myBookings.toString();
+        return "Your booking is canceled successfully!";
     }
 
     public int lastBookId() {

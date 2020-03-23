@@ -54,6 +54,11 @@ public class Book implements Serializable {
                 passenger.getName(),passenger.getSurname());
     }
 
+    public String show() {
+        return String.format("Booking id:%d ; Flight id: %d ; Passenger name: %s ; Passenger surname:%s\n", id, flightId,
+                passenger.getName(),passenger.getSurname());
+    }
+
     @Override
     public String toString() {
         String sb = "Book{" + "id=" + id + ", flightId=" + flightId + ", " + passenger + '}';
